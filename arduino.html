@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Make a Line Following Bot Using Arduino Uno</title>
+  <style>
+    /* Import a modern Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+    /* Reset and basic styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f9f9f9;
+      color: #131212;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    /* Main container for the blog post */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 0px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    /* Header styles */
+    header {
+      background: linear-gradient(135deg, #000000, #00042b);
+      color: #fff;
+      padding: 20px 30px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1rem;
+    }
+    
+    /* Article content styles */
+    article {
+      padding: 30px;
+    }
+    article h2 {
+      color: #000000;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+    }
+    article h3 {
+      margin: 20px 0 10px;
+      font-size: 1.4rem;
+      color: #141313;
+    }
+    article p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      text-align: justify;
+    }
+    article ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+    article ul li {
+      margin-bottom: 10px;
+    }
+    
+    /* Stylish image placeholder */
+    .image-placeholder {
+      width: 100%;
+      height: 300px;
+      background: #ddd;
+      border: 2px dashed #bbb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+      font-size: 1.2rem;
+      color: #000000;
+      font-style: italic;
+    }
+    
+    /* Code block styling */
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    
+    /* Table styling for the connections chart */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #f2f2f2;
+    }
+    
+    /* Footer styles */
+    footer {
+      background: #000000;
+      color: #fff;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive typography adjustments */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      article h2 {
+        font-size: 1.5rem;
+      }
+      article p, article ul li {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>How to Make a Line Following Bot Using Arduino Uno</h1>
+      <p>Published on: March 17, 2025</p>
+    </header>
+    
+    <article>
+      <h2>Introduction</h2>
+      <p>
+        In this blog, I will show you a simple way to build a line following bot using an Arduino Uno. This project is perfect for beginners who want to learn about robotics and basic electronics. I have explained every step in a simple manner so that anyone can follow along.
+      </p>
+      
+      <h2>Components Required</h2>
+      <ul>
+        <li>Arduino Uno board</li>
+        <li>Robot Chassis (a basic frame for your robot)</li>
+        <li>2 DC Motors</li>
+        <li>Motor Driver (such as L298N)</li>
+        <li>Infrared (IR) Sensor Module</li>
+        <li>Breadboard and Jumper Wires</li>
+        <li>Battery Pack</li>
+      </ul>
+      
+      <h2>Step 1: Assembling the Chassis</h2>
+      <p>
+        First, assemble the robot chassis. Follow the instructions that come with your chassis kit. Mount the DC motors on the chassis and secure them properly. Make sure that the wheels are firmly attached and can rotate without any problems.
+      </p>
+      <div class="image-placeholder">
+        Image: Assembling the chassis
+      </div>
+      
+      <h2>Step 2: Wiring the Motors and Motor Driver</h2>
+      <p>
+        Next, connect the DC motors to the motor driver. The motor driver controls the speed and direction of the motors. Use jumper wires to connect the motor driver to the Arduino. Make sure to follow the wiring diagram provided in the motor driver’s manual. This step is very important, so double-check your connections.
+      </p>
+      <div class="image-placeholder">
+        Image: Wiring the motor driver
+      </div>
+      
+      <h2>Step 3: Integrating the IR Sensor Module</h2>
+      <p>
+        Now, attach the IR sensor module to the front of your robot. This sensor will detect the line on the ground. Connect the sensor’s output to one of the Arduino’s digital input pins. Position the sensor so that it faces the ground and can clearly see the line.
+      </p>
+      <div class="image-placeholder">
+        Image: Connecting the IR sensor
+      </div>
+      
+      <h2>Step 4: Programming the Arduino</h2>
+      <p>
+        It is time to program the Arduino. Open the Arduino IDE on your computer and write a simple program that reads the sensor value and controls the motors. The idea is to keep the bot moving straight when it detects the line and to turn when it loses the line. Below is a basic example:
+      </p>
+      <pre>
+if(sensor_detects_line) {
+    // Move forward
+} else {
+    // Adjust direction until the line is found
+}
+      </pre>
+      <p>
+        Upload the code to your Arduino using the USB cable. Test the basic functionality by checking the sensor readings in the Serial Monitor.
+      </p>
+      
+      <h2>Step 5: Testing and Calibration</h2>
+      <p>
+        After uploading the code, place your robot on a track with a clear, dark line on a light background. Observe the robot’s movement. You might need to adjust the sensor sensitivity or change the motor speeds in your code for better performance. Keep testing and fine-tuning until the bot follows the line smoothly.
+      </p>
+      <div class="image-placeholder">
+        Image: Testing the bot on a track
+      </div>
+      
+      <h2>Connections Chart</h2>
+      <p>
+        Below is a table showing the connection details between the Arduino and the components:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Pin on Arduino / Connection</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Left IR Sensor</td>
+            <td>A0</td>
+            <td>Analog input for left sensor</td>
+          </tr>
+          <tr>
+            <td>Right IR Sensor</td>
+            <td>A1</td>
+            <td>Analog input for right sensor</td>
+          </tr>
+          <tr>
+            <td>Left Motor Forward</td>
+            <td>8</td>
+            <td>Control pin for left motor forward</td>
+          </tr>
+          <tr>
+            <td>Left Motor Backward</td>
+            <td>9</td>
+            <td>Control pin for left motor backward</td>
+          </tr>
+          <tr>
+            <td>Right Motor Forward</td>
+            <td>10</td>
+            <td>Control pin for right motor forward</td>
+          </tr>
+          <tr>
+            <td>Right Motor Backward</td>
+            <td>11</td>
+            <td>Control pin for right motor backward</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h2>Arduino Code</h2>
+      <p>
+        The following code can be used to control the line following bot. Make sure the connections in the chart match your wiring.
+      </p>
+      <pre>
+        <code>
+/* Simple Arduino Code for a Line Following Bot */
+
+// Define pins for the IR sensors
+#define leftSensorPin A0
+#define rightSensorPin A1
+
+// Define pins for the motor driver (for left and right motors)
+#define leftMotorForward 8
+#define leftMotorBackward 9
+#define rightMotorForward 10
+#define rightMotorBackward 11
+
+void setup() {
+  // Initialize the sensor pins as inputs
+  pinMode(leftSensorPin, INPUT);
+  pinMode(rightSensorPin, INPUT);
+  
+  // Initialize the motor control pins as outputs
+  pinMode(leftMotorForward, OUTPUT);
+  pinMode(leftMotorBackward, OUTPUT);
+  pinMode(rightMotorForward, OUTPUT);
+  pinMode(rightMotorBackward, OUTPUT);
+  
+  // Start serial communication for debugging (optional)
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read the values from the IR sensors
+  int leftSensorValue = digitalRead(leftSensorPin);
+  int rightSensorValue = digitalRead(rightSensorPin);
+  
+  // Print sensor values to the serial monitor (for debugging)
+  Serial.print("Left Sensor: ");
+  Serial.print(leftSensorValue);
+  Serial.print(" | Right Sensor: ");
+  Serial.println(rightSensorValue);
+  
+  // Decision making:
+  // If both sensors detect the black line (LOW), move forward.
+  if (leftSensorValue == LOW && rightSensorValue == LOW) {
+    forward();
+  }
+  // If only the left sensor detects the line, turn left.
+  else if (leftSensorValue == LOW && rightSensorValue == HIGH) {
+    turnLeft();
+  }
+  // If only the right sensor detects the line, turn right.
+  else if (leftSensorValue == HIGH && rightSensorValue == LOW) {
+    turnRight();
+  }
+  // If no sensor detects the line, stop the bot.
+  else {
+    stopMotors();
+  }
+  
+  delay(50); // Small delay for stable operation
+}
+
+// Function to move the bot forward
+void forward() {
+  digitalWrite(leftMotorForward, HIGH);
+  digitalWrite(leftMotorBackward, LOW);
+  digitalWrite(rightMotorForward, HIGH);
+  digitalWrite(rightMotorBackward, LOW);
+}
+
+// Function to turn the bot left
+void turnLeft() {
+  // Stop left motor and run right motor forward to make a left turn
+  digitalWrite(leftMotorForward, LOW);
+  digitalWrite(leftMotorBackward, LOW);
+  digitalWrite(rightMotorForward, HIGH);
+  digitalWrite(rightMotorBackward, LOW);
+}
+
+// Function to turn the bot right
+void turnRight() {
+  // Run left motor forward and stop right motor to make a right turn
+  digitalWrite(leftMotorForward, HIGH);
+  digitalWrite(leftMotorBackward, LOW);
+  digitalWrite(rightMotorForward, LOW);
+  digitalWrite(rightMotorBackward, LOW);
+}
+
+// Function to stop both motors
+void stopMotors() {
+  digitalWrite(leftMotorForward, LOW);
+  digitalWrite(leftMotorBackward, LOW);
+  digitalWrite(rightMotorForward, LOW);
+  digitalWrite(rightMotorBackward, LOW);
+}
+  
+        </code>
+      </pre>
+      
+      <h2>Conclusion</h2>
+      <p>
+        Building a line following bot with an Arduino Uno is a fun project that helps you learn about robotics and electronics. By following these simple steps, you can build your own bot and experiment with different improvements. I hope this guide was clear and helpful. Enjoy your project and keep learning!
+      </p>
+    </article>
+    
+    <footer>
+      <p>&copy; 2025 Arghya_Explains. All Rights Reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
