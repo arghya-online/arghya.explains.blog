@@ -9,7 +9,6 @@
   <title>Arghya Explains Blog</title>
   <!-- Tailwind CSS + Typography plugin -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.10/dist/typography.umd.min.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -23,7 +22,6 @@
           },
         },
       },
-      plugins: [window.tailwindcss?.typography],
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -141,18 +139,21 @@
           <div class="text-3xl">🌐</div>
           <span class="text-xs text-gray-400">March 18, 2025 • 2 min read</span>
           <h3 class="text-xl font-bold">What is Arduino?</h3>
-          <p class="prose prose-sm dark:prose-invert">Know what Arduino is, why it is used, how to use it for building your projects, how you can program and opertate it. Read more for detailed information .</p>
+          <p class="prose prose-sm dark:prose-invert">Know what Arduino is, why it is used, how to use it for building your projects, how you can program and operate it. Read more for detailed information .</p>
           <a href="know-arduino.html" class="text-accent hover:underline font-bold text-sm mt-2">Read more →</a>
         </article>
         <!-- Article 3: Robotics -->
-        <article class="card-hover border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg bg-white dark:bg-gray-800 p-6 flex flex-col gap-3 cursor-pointer" tabindex="0" onclick="window.location='#'">
+        <article class="card-hover border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg bg-white dark:bg-gray-800 p-6 flex flex-col gap-3 cursor-pointer" tabindex="0" onclick="window.location='roboticsStarter.html'">
           <span class="bg-gray-800 text-white px-4 py-1 rounded-full text-xs font-semibold w-max">Robotics</span>
-          <div class="text-3xl">🤖</div>
-          <span class="text-xs text-gray-400">March 12, 2025 • 0 min read</span>
-          <h3 class="text-xl font-bold">Building a Line-Following Robot with Arduino and IR Sensors</h3>
-          <p class="prose prose-sm dark:prose-invert">Learn how to build a line-following robot using an Arduino, IR sensors, and motor drivers.</p>
-          <a href="#" class="text-accent hover:underline font-bold text-sm mt-2">Read more →</a>
-        </article>
+             <div class="text-3xl">🤖</div>
+          <span class="text-xs text-gray-400">June 30, 2025 • 8 min read</span>
+          <h3 class="text-xl font-bold text-accent">Robotics Starter Pack: Build Your First Arduino Bot</h3>
+          <p class="text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
+                   A full beginner's roadmap to robotics — covering programming, electronics, and mechanical design. Learn to build bots like line-followers, obstacle-avoiders, and more.
+          </p>
+          <a href="roboticsStarter.html" class="text-accent hover:underline font-bold text-sm mt-2">Read more →</a>
+      </article>
+
         <!-- Article 4: Web Development -->
         <article class="card-hover border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg bg-white dark:bg-gray-800 p-6 flex flex-col gap-3 cursor-pointer" tabindex="0" onclick="window.location='led-blinking.html'">
           <span class="bg-accent text-white px-4 py-1 rounded-full text-xs font-semibold w-max">Atduino</span>
